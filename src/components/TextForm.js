@@ -8,6 +8,7 @@ export default function TextForm(props) {
         let newText = text.toUpperCase();
         settext(newText)
         props.showAlert("converted to uppercase", "success");
+
     }
 
     const convertlowcase =()=>{
@@ -35,7 +36,17 @@ export default function TextForm(props) {
     const handleonChange = (event)=>{
         settext(event.target.value)
     }
-    
+
+    function countWords(text){
+      let wc = text.split(" ").length;
+      text.split(" ").forEach((word) => {
+          if(!word.length){
+              wc -= 1;  
+          }
+      });
+
+      return wc;
+  }
 
   return (
     <>
@@ -53,7 +64,7 @@ export default function TextForm(props) {
 
   <div className="container my-3" style={{color: props.mode==="light"?"black":"white"}}>
         <h1 style={{color: props.mode==="light"?"black":"white"}}>Your word summary is:</h1>
-        <p>{text.split(" ").length} words and {text.length} characters</p>
+        <p> {countWords(text)} words and {text.length} characters</p>
         <p>{0.008 * text.split(" ").length} time taken to read</p>
         <h3>Preview</h3>
         <p>{text.length > 0 ? text : "write something in the text-box"}</p>

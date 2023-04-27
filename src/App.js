@@ -1,4 +1,3 @@
-import { isCursorAtEnd } from "@testing-library/user-event/dist/utils";
 import React, {useState} from 'react'
 import "./App.css";
 import Navbar from "./components/Navbar";
@@ -14,17 +13,23 @@ const showAlert = (message, type)=>{
     message: message,
     type: type
   })
+  setTimeout(()=>{
+    setAlert(null)
+  },1500)
 };
 
   const togglemode = () => {
     if (mode === "dark") {
       setmode("light");
       document.body.style.backgroundColor = "white";
-      showAlert("Enabled Dark Mode", "success");
+      showAlert("Enabled Light Mode", "success");
+      document.title= "TextUtils - Light mode"
     } else {
       setmode("dark");
       document.body.style.backgroundColor = "#042743";
-      showAlert("Enabled light Mode", "success");
+      showAlert("Enabled Dark Mode", "success");
+      document.title="TextUtils - Dark mode"
+
     }
   };
   return (
