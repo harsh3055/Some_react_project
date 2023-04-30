@@ -10,9 +10,7 @@ const Alert = (props) => {
         <strong>{props.alert.type}</strong>: {props.alert.message}
       </div>
     )
-  )
+  );
 };
 
 export default Alert;
-
-
